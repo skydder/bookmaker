@@ -27,6 +27,12 @@ def main():
         default="back",
         help="where to insert blank padding pages (default: back)",
     )
+    parser.add_argument(
+        "--signature",
+        type=int,
+        default=None,
+        help="sheets per signature for multi-signature binding (e.g., 4 for 16-page signatures)",
+    )
     args = parser.parse_args()
 
     if args.split:
@@ -41,4 +47,5 @@ def main():
             args.output_file,
             pad_mode=args.padding,
             right_to_left=args.rtl,
+            sheets_per_signature=args.signature,
         )
